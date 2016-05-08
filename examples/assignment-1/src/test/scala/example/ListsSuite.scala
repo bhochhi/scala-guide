@@ -118,7 +118,26 @@ class ListsSuite extends FunSuite {
     assert(sum(List(1,2,0)) === 3)
   }
   
+  test("sum of number in empty list"){
+    assert(sum(List())===0)
+  }
+  
+  test("sum with negative numbers"){
+    assert(sum(List(-2,-3,-1))=== -6)
+  }
+  
+  
   test("max of a few numbers") {
     assert(max(List(3, 7, 2)) === 7)
+  }
+  
+  test("max of few numbers with negatives"){
+     assert(max(List(3,-7,2)) === 3 )
+  }
+  
+  test("max of empty List throws NoSuchElementException"){
+     intercept[NoSuchElementException] {
+      max(List.empty)
+    }
   }
 }

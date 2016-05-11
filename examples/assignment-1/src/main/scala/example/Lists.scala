@@ -25,7 +25,7 @@ object Lists {
    */
   def sum(xs: List[Int]): Int = {
     if(xs.isEmpty){
-      0;
+      0
     }else{
       xs.head + sum(xs.tail)
     }

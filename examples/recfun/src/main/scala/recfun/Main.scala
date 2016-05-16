@@ -29,7 +29,12 @@ object Main {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+    
+     if(chars.isEmpty) true
+     balance(chars.tail)
+    return true
+  }
 
   /**
    * Exercise 3

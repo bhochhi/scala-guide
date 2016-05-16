@@ -31,28 +31,46 @@ object Main {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
-    var bal:Int = 0
-    var len:Int = chars.length
-    var ite = chars.iterator
-    while(ite.hasNext){
-      val c:Char = ite.next()
-      if(c =='('){
-        bal = bal+1        
-      }
-      if(c == ')'){
-        if(bal>0)
-        {
-          bal = bal-1;
-        }
-        else{
-          return false;
-        }
-      }
-    }
-    if(bal==0)
-      return true;
-    return false
+//     var bal:Int = 0
+//    var len:Int = chars.length
+//    var ite = chars.iterator
+//    while(ite.hasNext){
+//      val c:Char = ite.next()
+//      if(c =='('){
+//        bal = bal+1        
+//      }
+//      if(c == ')'){
+//        if(bal>0)
+//        {
+//          bal = bal-1;
+//        }
+//        else{
+//          return false;
+//        }
+//      }
+//    }
+//    if(bal==0)
+//      return true;
+//    return false
      
+    
+     def isBalance(chrs:List[Char],currentCount:Int):Boolean={
+       if(chrs.isEmpty){
+         if(currentCount==0) true else false
+       }
+       else{
+         chrs.head match {
+           case '('=> isBalance(chrs.tail, currentCount+1)
+           case ')' => {
+             if(currentCount<=0) false
+             else isBalance(chrs.tail, currentCount-1)
+           }
+           case _ => isBalance(chrs.tail, currentCount)
+         }
+         
+       }
+     }
+     isBalance(chars, 0);
   }
 
   /**

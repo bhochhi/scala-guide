@@ -1,5 +1,6 @@
 package recfun
 import common._
+import com.sun.javafx.geom.Path2D.Iterator
 
 object Main {
   def main(args: Array[String]) {
@@ -30,10 +31,28 @@ object Main {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
-    
-     if(chars.isEmpty) true
-     balance(chars.tail)
-    return true
+    var bal:Int = 0
+    var len:Int = chars.length
+    var ite = chars.iterator
+    while(ite.hasNext){
+      val c:Char = ite.next()
+      if(c =='('){
+        bal = bal+1        
+      }
+      if(c == ')'){
+        if(bal>0)
+        {
+          bal = bal-1;
+        }
+        else{
+          return false;
+        }
+      }
+    }
+    if(bal==0)
+      return true;
+    return false
+     
   }
 
   /**
